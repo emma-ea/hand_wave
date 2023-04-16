@@ -91,12 +91,17 @@ class MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           animation: _waveAnim, 
           builder: (context, child) {
             return Transform(
+              key: const Key('transformer'),
               transform: Matrix4.identity()..rotateZ(_waveAnim.value.toRad),
               alignment: Alignment.bottomRight,
               child: child,
             );
           },
-          child: GestureDetector(onTap: _startWaveAnim ,child: const Text('👋', style: TextStyle(fontSize: 24),)),
+          child: GestureDetector(onTap: _startWaveAnim ,child: const Text(
+            key: Key('wave-emoji'), 
+            '👋', 
+            style: TextStyle(fontSize: 24),
+            ),),
         ),
       ],
     );
